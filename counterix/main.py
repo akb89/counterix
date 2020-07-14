@@ -22,12 +22,12 @@ logger = logging.getLogger(__name__)
 
 def _generate(args):
     logger.info('Generating distributional model from {}'.format(args.corpus))
-    if args.corpus.endswith('.txt'):
+    if not args.corpus.endswith('.txt'):
         model_filepath = os.path.abspath(args.corpus)
     else:
-        model_filepath = os.path.abspath(args.corpus).split('.txt')
+        model_filepath = os.path.abspath(args.corpus).split('.txt')[0]
     vocab_filepath = '{}.vocab'.format(model_filepath)
-    model, vocab = generator.generate_distributional_model(
+    model, vocab = generator.generate_raw_count_based_dsm(
         args.corpus, args.min_count, args.win_size)
     logger.info('Saving vocabulary to {}'.format(vocab_filepath))
     with open(vocab_filepath, 'w', encoding='utf-8') as vocab_stream:
@@ -46,8 +46,7 @@ def main():
         help='generate raw frequency count based model')
     parser_generate.set_defaults(func=_generate)
     parser_generate.add_argument('-c', '--corpus', required=True,
-                                 help='an input .txt corpus to compute \
-                                 counts on')
+                                 help='absolute filepath to corpus .txt file')
     parser_generate.add_argument('-m', '--min-count', default=0, type=int,
                                  help='frequency threshold on vocabulary')
     parser_generate.add_argument('-w', '--win-size', default=2, type=int,

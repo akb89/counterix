@@ -9,7 +9,7 @@ import embeddix
 
 logger = logging.getLogger(__name__)
 
-__all__ = ('generate_distributional_model')
+__all__ = ('generate_raw_count_based_dsm')
 
 
 def count_words(corpus_filepath, min_count):

@@ -9,12 +9,12 @@ handlers:
     class: logging.StreamHandler
     formatter: simple
 loggers:
-  embeddix.main:
+  counterix.main:
     level: INFO
     handlers: [console]
-  embeddix.core:
+  counterix.core:
     level: INFO
     handlers: [console]
-  embeddix.utils:
+  counterix.utils:
     level: INFO
     handlers: [console]
