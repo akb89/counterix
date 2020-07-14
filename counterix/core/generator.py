@@ -74,7 +74,6 @@ def generate_raw_count_based_dsm(corpus_filepath, min_count, win_size):
             rows.append(col_idx)
             columns.append(row_idx)
             data.append(data_dic[row_idx][col_idx])
-
     model = sparse.csr_matrix((data, (rows, columns)),
                               shape=(len(word_to_idx_dic),
                                      len(word_to_idx_dic)),

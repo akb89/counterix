@@ -30,12 +30,11 @@ python3 setup.py install
 
 ### Generate
 To generate a raw count matrix from a tokenized corpus, run:
-```
+```shell
 counterix generate \
   --corpus /abs/path/to/corpus/txt/file \
   --min-count frequency_threshold \
-  --win-size window_size \
-  --output abs/path/to/output/model/directory
+  --win-size window_size
 ```
 
 If the `--output` parameter is not set, the output files will be saved to the corpus directory.
