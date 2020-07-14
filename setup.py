@@ -23,16 +23,15 @@ setup(
     keywords=['count-based', 'distributional semantics'],
     platforms=['any'],
     packages=['counterix', 'counterix.logging', 'counterix.exceptions',
-              'counterix.utils', 'counterix.core', 'counterix.resources',
-              'counterix.filtering'],
-    package_data={'counterix': ['logging/*.yml', 'resources/*']},
+              'counterix.utils', 'counterix.core'],
+    package_data={'counterix': ['logging/*.yml']},
     include_package_data=True,
     entry_points={
         'console_scripts': [
             'counterix = counterix.main:main'
         ],
     },
-    install_requires=['pyyaml>=4.2b1'],
+    install_requires=['pyyaml>=4.2b1', 'scipy==1.2.0', 'embeddix==1.4.0'],
     classifiers=['Development Status :: 2 - Pre-Alpha',
                  'Environment :: Web Environment',
                  'Intended Audience :: Developers',
