@@ -10,7 +10,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
 setup(
-    name='entropix',
+    name='counterix',
     description='Generating count-based Distributional Semantic Modelss',
     author=' Alexandre Kabbach',
     author_email='akb@3azouz.net',
