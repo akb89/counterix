@@ -8,7 +8,7 @@ import argparse
 import logging
 import logging.config
 
-from scipy import sparse
+import embeddix
 
 import counterix.core.generator as generator
 import counterix.utils.config as cutils
@@ -20,21 +20,25 @@ logging.config.dictConfig(
 logger = logging.getLogger(__name__)
 
 
-def _generate(args):
-    logger.info('Generating distributional model from {}'.format(args.corpus))
-    if not args.corpus.endswith('.txt'):
-        model_filepath = os.path.abspath(args.corpus)
+def _generate(corpus_filepath, min_count, win_size):
+    logger.info('Generating distributional model from {}'
+                .format(corpus_filepath))
+    if not corpus_filepath.endswith('.txt'):
+        model_filepath = os.path.abspath(corpus_filepath)
     else:
-        model_filepath = os.path.abspath(args.corpus).split('.txt')[0]
+        model_filepath = os.path.abspath(corpus_filepath).split('.txt')[0]
+    model_filepath = '{}.mc-{}.win-{}'.format(model_filepath, min_count,
+                                              win_size)
     vocab_filepath = '{}.vocab'.format(model_filepath)
     model, vocab = generator.generate_raw_count_based_dsm(
-        args.corpus, args.min_count, args.win_size)
-    logger.info('Saving vocabulary to {}'.format(vocab_filepath))
-    with open(vocab_filepath, 'w', encoding='utf-8') as vocab_stream:
-        for word, idx in vocab.items():
-            print('{}\t{}'.format(idx, word), file=vocab_stream)
-    logger.info('Saving numpy matrix to {}'.format(model_filepath))
-    sparse.save_npz(model_filepath, model)
+        corpus_filepath, min_count, win_size)
+    embeddix.save_vocab(vocab_filepath, vocab)
+    embeddix.save_sparse(model_filepath, model)
+
+
+def generate(args):
+    """Generate raw count model in scipy sparse CSR matrix format."""
+    return _generate(args.corpus, args.min_count, args.win_size)
 
 
 def main():
@@ -44,7 +48,7 @@ def main():
     parser_generate = subparsers.add_parser(
         'generate', formatter_class=argparse.RawTextHelpFormatter,
         help='generate raw frequency count based model')
-    parser_generate.set_defaults(func=_generate)
+    parser_generate.set_defaults(func=generate)
     parser_generate.add_argument('-c', '--corpus', required=True,
                                  help='absolute filepath to corpus .txt file')
     parser_generate.add_argument('-m', '--min-count', default=0, type=int,
