@@ -31,7 +31,7 @@ setup(
             'counterix = counterix.main:main'
         ],
     },
-    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.6.3'],
+    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.7.0'],
     classifiers=['Development Status :: 2 - Pre-Alpha',
                  'Environment :: Web Environment',
                  'Intended Audience :: Developers',

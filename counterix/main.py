@@ -105,7 +105,7 @@ def main():
     parser_svd = subparsers.add_parser(
         'svd', formatter_class=argparse.RawTextHelpFormatter,
         help='apply svd to input matrix')
-    parser_svd.set_defaults(func=_svd)
+    parser_svd.set_defaults(func=svd)
     parser_svd.add_argument('-m', '--model', required=True,
                             help='absolute path to .npz matrix '
                                  'corresponding to the distributional '

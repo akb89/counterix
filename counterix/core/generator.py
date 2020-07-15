@@ -78,7 +78,7 @@ def generate_raw_count_based_dsm(corpus_filepath, min_count, win_size):
                               shape=(len(word_to_idx_dic),
                                      len(word_to_idx_dic)),
                               dtype='f')
-    logger.info('Matrix info: {} non-zero entries, {} shape, {:.6f} density'
-                .format(model.getnnz(), model.shape,
-                        model.getnnz()*1.0/(model.shape[0]*model.shape[1])))
+    # logger.info('Matrix info: {} non-zero entries, {} shape, {:.6f} density'
+    #             .format(model.getnnz(), model.shape,
+    #                     model.getnnz()*1.0/(model.shape[0]*model.shape[1])))
     return model, word_to_idx_dic

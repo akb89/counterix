@@ -53,5 +53,4 @@ counterix svd \
   --dim singular_vectors_final_dim
 ```
 
-## Warning
-For informativeness, np.dot in `prob_values = np.exp(np.dot(l1, self._model.trainables.syn1neg.T))` using multithreading by default with openblas. Need to run the code with `env OMP_NUM_THREADS=1 counterix generate...`
+To control the number of threads used during SVD, run counterix with `env OMP_NUM_THREADS=1`
