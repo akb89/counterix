@@ -42,10 +42,7 @@ If the `--output` parameter is not set, the output files will be saved to the co
 ### Weigh
 To weigh a raw count model with PPMI, run:
 ```
-counterix weigh \
-  --model /abs/path/to/raw/count/npz/model \
-  --output /abs/path/to/output/model/directory \
-  --weighing-func ppmi
+counterix weigh --model /abs/path/to/raw/count/npz/model
 ```
 
 ### SVD
@@ -53,8 +50,7 @@ To apply SVD on a PPMI-weighed model, with k=10000, run:
 ```
 counterix svd \
   --model /abs/path/to/ppmi/npz/model \
-  --dim 10000 \
-  --which LM  # largest singular values
+  --dim singular_vectors_final_dim
 ```
 
 ## Warning
