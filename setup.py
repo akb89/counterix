@@ -11,12 +11,12 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setup(
     name='counterix',
-    description='Generating count-based Distributional Semantic Modelss',
+    description='Generating count-based Distributional Semantic Models',
     author=' Alexandre Kabbach',
     author_email='akb@3azouz.net',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='0.1.0',
+    version='1.0.0',
     url='https://github.com/akb89/counterix',
     download_url='https://github.com/akb89/counterix',
     license='MIT',
@@ -31,8 +31,8 @@ setup(
             'counterix = counterix.main:main'
         ],
     },
-    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.7.0'],
-    classifiers=['Development Status :: 2 - Pre-Alpha',
+    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.10.0'],
+    classifiers=['Development Status :: 5 - Production/Stable',
                  'Environment :: Web Environment',
                  'Intended Audience :: Developers',
                  'Intended Audience :: Education',
