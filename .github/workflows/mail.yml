@@ -33,11 +33,7 @@ jobs:
         python -m pip install --upgrade pip
         python setup.py -q install
         pip install pylint pydocstyle pytest
-
     # Runs a set of commands using the runners shell
-    - name: Test with pytest
-      run: |
-        pytest tests
     - name: Lint with pylint and pydocstyle
       run: |
         pylint counterix
