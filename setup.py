@@ -16,7 +16,7 @@ setup(
     author_email='akb@3azouz.net',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='1.1.0',
+    version='1.1.1',
     url='https://github.com/akb89/counterix',
     download_url='https://github.com/akb89/counterix',
     license='MIT',
@@ -31,7 +31,7 @@ setup(
             'counterix = counterix.main:main'
         ],
     },
-    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.14.1'],
+    install_requires=['pyyaml>=4.2b1', 'scipy==1.5.1', 'embeddix==1.15.0'],
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Environment :: Web Environment',
                  'Intended Audience :: Developers',

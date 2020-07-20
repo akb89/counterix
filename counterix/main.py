@@ -30,10 +30,7 @@ def _count(corpus_filepath, min_count):
         counts_filepath = os.path.abspath(corpus_filepath).split('.txt')[0]
     counts_filepath = '{}.counts'.format(counts_filepath)
     logger.info('Saving counts to file {}'.format(counts_filepath))
-    with open(counts_filepath, 'w', encoding='utf-8') as counts_str:
-        for word, count in sorted(counts.items(), key=lambda x: x[1],
-                                  reverse=True):
-            print('{}\t{}'.format(word, count), file=counts_str)
+    embeddix.save_counts(counts_filepath, counts)
 
 
 def _generate(corpus_filepath, min_count, win_size):
