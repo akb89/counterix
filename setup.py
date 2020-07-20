@@ -16,7 +16,7 @@ setup(
     author_email='akb@3azouz.net',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='1.0.3',
+    version='1.1.0',
     url='https://github.com/akb89/counterix',
     download_url='https://github.com/akb89/counterix',
     license='MIT',

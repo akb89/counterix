@@ -22,6 +22,20 @@ logging.config.dictConfig(
 logger = logging.getLogger(__name__)
 
 
+def _count(corpus_filepath, min_count):
+    counts = generator.count_words(corpus_filepath, min_count)
+    if not corpus_filepath.endswith('.txt'):
+        counts_filepath = os.path.abspath(corpus_filepath)
+    else:
+        counts_filepath = os.path.abspath(corpus_filepath).split('.txt')[0]
+    counts_filepath = '{}.counts'.format(counts_filepath)
+    logger.info('Saving counts to file {}'.format(counts_filepath))
+    with open(counts_filepath, 'w', encoding='utf-8') as counts_str:
+        for word, count in sorted(counts.items(), key=lambda x: x[1],
+                                  reverse=True):
+            print('{}\t{}'.format(word, count), file=counts_str)
+
+
 def _generate(corpus_filepath, min_count, win_size):
     logger.info('Generating distributional model from {}'
                 .format(corpus_filepath))
@@ -34,9 +48,10 @@ def _generate(corpus_filepath, min_count, win_size):
     vocab_filepath = '{}.vocab'.format(model_filepath)
     model, vocab = generator.generate_raw_count_based_dsm(
         corpus_filepath, min_count, win_size)
-    logger.info('Saving vocabulary to file...')
+    logger.info('Saving vocabulary to file {}'.format(vocab_filepath))
     embeddix.save_vocab(vocab_filepath, vocab)
-    logger.info('Saving raw count sparse matrix to file...')
+    logger.info('Saving raw count sparse matrix to file {}'
+                .format(model_filepath))
     embeddix.save_sparse(model_filepath, model)
 
 
