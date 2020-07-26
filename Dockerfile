@@ -4,4 +4,8 @@ ADD . /counterix
 
 WORKDIR /counterix
 
-RUN python3 setup.py install
+RUN python -m pip install numpy
+
+RUN python -m pip install Cython
+
+RUN python setup.py install
