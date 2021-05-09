@@ -50,7 +50,7 @@ To apply SVD on a PPMI-weighed model, with k=10000, run:
 ```
 counterix svd \
   --model /abs/path/to/ppmi/npz/model \
-  --dim singular_vectors_final_dim
+  --dim 10000
 ```
 
 To control the number of threads used during SVD, run counterix with `env OMP_NUM_THREADS=1`
